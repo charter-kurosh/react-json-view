@@ -113,6 +113,11 @@ The following object will be passed to your method:
 Returning `false` from a callback method will prevent the src from being affected.
 
 ### Contributing to the source code
+#### about the code
+    - most of the logic happens in Object.js
+    - the recursion happens inside renderObjectContents()
+        - JsonVariable adds a 'type' property for each key in the [current] object, via examination of the key's value
+
 #### Run the Dev Server
 
 ```bash

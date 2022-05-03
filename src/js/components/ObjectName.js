@@ -26,6 +26,13 @@ export default function getObjectName(props) {
             <span />
         );
     } else {
+        if(props.type === 'object') {
+            console.log("ON props--", props.src)
+            console.log("first key--", props.src[
+                Object.keys(props.src)[0]
+            ])
+
+        }
         return (
             <span {...Theme(theme, 'object-name')} key={namespace}>
                 <span class="object-key">
