@@ -117,6 +117,7 @@ Returning `false` from a callback method will prevent the src from being affecte
     - most of the logic happens in Object.js
     - the recursion happens inside renderObjectContents()
         - JsonVariable adds a 'type' property for each key in the [current] object, via examination of the key's value
+        - this process may repeat, in nested fashion, if said property === 'object' --function adjoins a type-specific component, to the list for display
 
 #### Run the Dev Server
 
