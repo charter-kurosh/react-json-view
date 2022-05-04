@@ -7,6 +7,7 @@
   },
   "parser":"@babel/eslint-parser",
   "parserOptions": {
+    "babelOptions": { "presets": [ ["babel-preset-react-app", false] ] } },
     "sourceType": "module",
     "ecmaVersion": 6,
     "ecmaFeatures": {
