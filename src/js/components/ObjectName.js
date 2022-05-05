@@ -31,10 +31,10 @@ export default function getObjectName(props) {
                 targetHeader1 = props.src.sourceComponent,
                 targetHeader2 = props.src.activityDescription
             
-            console.log("ON props--", props.src)
+            /* console.log("ON props--", props.src)
             console.log("first key--", props.src[
                 Object.keys(props.src)[0]
-            ])
+            ]) */
 
             if(targetHeader1) {
                 display_name = targetHeader1 }
