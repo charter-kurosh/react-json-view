@@ -16,7 +16,8 @@ ReactDom.render(
         <JsonViewer
             sortKeys
             style={{ padding: '30px', backgroundColor: 'white' }}
-            src={getExampleJson1()}
+            src={getActivityDescriptionJson()}
+            displayHeaderFromKeys={['sourceComponent', 'activityDescription']}
             quotesOnKeys={false}
             collapseStringsAfterLength={12}
             onEdit={e => {
@@ -179,6 +180,7 @@ ReactDom.render(
 //just a function to get an example JSON object
 function getExampleJson1() {
     return {
+        activityDescription: 'yaaaass',
         string: 'this is a test string',
         integer: 42,
         empty_array: [],
@@ -283,4 +285,58 @@ function getExampleArray() {
             pretty_cool: true
         }
     ];
+}
+
+function getActivityDescriptionJson() {
+    return {
+        "6759ffdc-5e03-43c4-aff0-9be3ab84955f": [
+            {
+                "_id": {
+                    "timestamp": 1645635605,
+                    "date": "2022-02-23T17:00:05.000+0000"
+                },
+                "mdpoTraceId": "6759ffdc-5e03-43c4-aff0-9be3ab84955f",
+                "activityDescription": "Received Kafka message",
+                "sourceComponent": "mdpo-event-consumer",
+                "activityContextData": {
+                    "policyEvaluationResults": [],
+                    "mobileAccount": {
+                        "mobileAccountInfo": {
+                            "soloMobileAccountId": "102837113",
+                            "mobileBillingAccounts": []
+                        },
+                        "additionalContext": []
+                    },
+                    "mdpoTraceId": "6759ffdc-5e03-43c4-aff0-9be3ab84955f",
+                    "additionalContext": [
+                        {
+                            "contextInfoValue": [
+                                {
+                                    "privateIpv4Address": "42.156.20.246",
+                                    "ipv6Address": "12d1:12b5:4ed3:1f19:e0ed:2b9a:fca0:553b",
+                                    "deviceId": "5d2c002b-20e6-44f4-a799-d07b968bd78d"
+                                }
+                            ],
+                            "contextInfoKey": "routerClients"
+                        }
+                    ],
+                    "loggingContext": [
+                        {
+                            "contextInfoValue": {
+                                "privateIpv4Address": "42.156.20.246",
+                                "soloMobileAccountId": "102837113",
+                                "ipv6Address": "12d1:12b5:4ed3:1f19:e0ed:2b9a:fca0:553b",
+                                "connectedSSID": "automationTest",
+                                "eventType": "device-connected",
+                                "deviceId": "5d2c002b-20e6-44f4-a799-d07b968bd78d",
+                                "eventTimestamp": "2021-09-13T14:18:52.068031Z"
+                            },
+                            "contextInfoKey": "inputMessage"
+                        }
+                    ]
+                },
+                "activityTimestamp": "2022-02-23T17:00:03.065Z"
+            }
+        ]
+    } 
 }

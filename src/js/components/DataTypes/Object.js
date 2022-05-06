@@ -152,7 +152,7 @@ class RjvObject extends React.PureComponent {
         }
 
         const IconComponent = expanded ? ExpandedIcon : CollapsedIcon;
-
+        
         return (
             <span>
                 <span
@@ -167,7 +167,7 @@ class RjvObject extends React.PureComponent {
                     >
                         <IconComponent {...{ theme, iconStyle }} />
                     </div>
-                    <ObjectName {...this.props} />
+                    <ObjectName {...{...this.props, type: object_type}} />
                     <span {...Theme(theme, 'brace')}>
                         {object_type === 'array' ? '[' : '{'}
                     </span>

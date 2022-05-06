@@ -56,6 +56,7 @@ class ReactJsonView extends React.PureComponent {
         style: {},
         validationMessage: 'Validation Error',
         defaultValue: null,
+        displayHeaderFromKeys: false,
         displayArrayKey: true
     };
 

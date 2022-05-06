@@ -9,14 +9,26 @@ export default function getObjectName(props) {
         theme,
         jsvRoot,
         name,
-        displayArrayKey
+        displayArrayKey,
+        displayHeaderFromKeys
     } = props;
 
     let display_name = props.name ? props.name : '';
+    const headers = []
+
+    if(displayHeaderFromKeys && props.type === 'object') {
+        for(const key of displayHeaderFromKeys) {
+            if(props.src[key]) headers.push(props.src[key])
+        }
+    }
 
     if (jsvRoot && (name === false || name === null)) {
         return <span />;
-    } else if (parent_type == 'array') {
+    } else if ( headers.length > 0 ) {
+        display_name = headers.join(' - ')
+        return objectContent({...props, display_name})
+    }
+    else if (parent_type == 'array') {
         return displayArrayKey ? (
             <span {...Theme(theme, 'array-key')} key={namespace}>
                 <span class="array-key">{display_name}</span>
@@ -25,36 +37,23 @@ export default function getObjectName(props) {
         ) : (
             <span />
         );
-    } else {
-        if(props.type === 'object') {
-            const
-                targetHeader1 = props.src.sourceComponent,
-                targetHeader2 = props.src.activityDescription
-            
-            /* console.log("ON props--", props.src)
-            console.log("first key--", props.src[
-                Object.keys(props.src)[0]
-            ]) */
+    } else return objectContent({...props, display_name})
+}
 
-            if(targetHeader1) {
-                display_name = targetHeader1 }
-            if(targetHeader2) display_name += (
-                ' - ' + targetHeader2 )
-        }
 
-        return (
-            <span {...Theme(theme, 'object-name')} key={namespace}>
-                <span class="object-key">
-                    {quotesOnKeys && (
-                        <span style={{ verticalAlign: 'top' }}>"</span>
-                    )}
-                    <span>{display_name}</span>
-                    {quotesOnKeys && (
-                        <span style={{ verticalAlign: 'top' }}>"</span>
-                    )}
-                </span>
-                <span {...Theme(theme, 'colon')}>:</span>
+function objectContent({display_name, namespace, quotesOnKeys, theme}) {
+    return (
+        <span {...Theme(theme, 'object-name')} key={namespace}>
+            <span class="object-key">
+                {quotesOnKeys && (
+                    <span style={{ verticalAlign: 'top' }}>"</span>
+                )}
+                <span>{display_name}</span>
+                {quotesOnKeys && (
+                    <span style={{ verticalAlign: 'top' }}>"</span>
+                )}
             </span>
-        );
-    }
+            <span {...Theme(theme, 'colon')}>:</span>
+        </span>
+    )
 }
